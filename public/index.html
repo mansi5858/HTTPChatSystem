@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTTP Chat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <div id="login-screen">
+      <div class="login-card">
+        <div class="login-icon">💬</div>
+        <h1>HTTP Chat</h1>
+        <p class="login-sub">Sign in with your email to see your conversations</p>
+        <form id="login-form">
+          <input type="email" id="user" name="user" required placeholder="you@example.com" autocomplete="email">
+          <p id="login-error" class="form-error hidden" role="alert"></p>
+          <button type="submit">Continue</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="chat-screen" class="hidden">
+      <aside id="sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-user">
+            <span class="avatar" id="sidebar-avatar">?</span>
+            <span id="sidebar-username"></span>
+          </div>
+          <button type="button" id="new-chat-btn" class="icon-btn" title="New chat">+</button>
+        </div>
+        <div class="conversations-header">Conversations</div>
+        <ul id="conversation-list"></ul>
+        <div id="conversation-list-empty" class="empty-hint">No chats yet. Start a new chat by email.</div>
+      </aside>
+
+      <main id="chat-main">
+        <div id="no-chat-selected" class="welcome-panel">
+          <div class="welcome-icon">📱</div>
+          <h2>Select a conversation</h2>
+          <p>Choose a chat from the list or start a new one by email.</p>
+        </div>
+
+        <div id="chat-panel" class="hidden">
+          <header id="chat-header">
+            <div class="chat-header-info">
+              <span class="avatar small" id="chat-avatar">?</span>
+              <div>
+                <span id="chat-title"></span>
+                <span id="chat-subtitle" class="chat-subtitle"></span>
+              </div>
+            </div>
+          </header>
+          <ul id="message-list"></ul>
+          <form id="send-form">
+            <input type="text" id="message-input" placeholder="Type a message" autocomplete="off" maxlength="2000">
+            <button type="submit" id="send-btn" title="Send">Send</button>
+          </form>
+        </div>
+      </main>
+    </div>
+
+    <div id="new-chat-modal" class="modal hidden">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <h3>New chat</h3>
+        <p>Enter the email address of the person you want to chat with. They'll see this chat when they sign in with that email.</p>
+        <form id="new-chat-form">
+          <input type="email" id="new-chat-input" placeholder="friend@example.com" autocomplete="email">
+          <p id="new-chat-error" class="form-error hidden" role="alert"></p>
+          <div class="modal-actions">
+            <button type="button" class="btn-secondary" id="new-chat-cancel">Cancel</button>
+            <button type="submit" class="btn-primary">Open chat</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
